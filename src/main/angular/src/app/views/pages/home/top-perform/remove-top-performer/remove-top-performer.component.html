@@ -1,0 +1,43 @@
+<div>
+  <div class="row">
+    <div class="col-md-11 height-30px">
+      <h5>Remove Top Performer</h5>
+    </div>
+    <div class="col-md-1 t-a-e">
+      <button
+        (click)="onCancelClick($event)"
+        aria-label="Close"
+        class="btn-close"
+        type="button">
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row" style="padding-left: 24px;">
+    Are you sure want to remove this Top Performer?
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 t-a-e">
+      <button
+        (click)="onRemove($event)"
+        class="btn btn-primary"
+        type="button">
+        Remove
+      </button>
+      <ng-container>
+        <button
+          (click)="onCancelClick($event)"
+          class="btn btn-secondary m-l-20"
+          type="button">
+          Cancel
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

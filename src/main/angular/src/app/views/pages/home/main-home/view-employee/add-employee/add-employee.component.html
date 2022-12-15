@@ -1,0 +1,222 @@
+<div>
+  <div class="row">
+    <div class="col-md-11 height-30px">
+      <h5>{{title}}</h5>
+    </div>
+    <div class="col-md-1 t-a-e">
+      <button
+        (click)="onCancelClick($event)"
+        aria-label="Close"
+        class="btn-close"
+        type="button">
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <form [formGroup]="addNewEmployeeForm" autocomplete="off" class="kt-form" id="login-form"
+          style="padding-top: 25px;">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Employee Name</mat-label>
+            <input autocomplete="off"
+                   class="user-name"
+                   formControlName="name"
+                   matInput
+                   placeholder="Employee Name"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('name','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>NTIC No</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="nticNo"
+                   matInput
+                   placeholder="NTIC No"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('nticNo','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Passport Expiry Date</mat-label>
+            <input
+              [matDatepicker]="picker" formControlName="passportExpiryDateStr"
+              matInput
+            >
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Address</mat-label>
+          <input autocomplete="off"
+                 class="user-name"
+                 formControlName="address"
+                 matInput
+                 placeholder=""
+                 type="text"/>
+          <mat-error *ngIf="isControlHasError('address','required')">
+            <strong>Required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Seat Location</mat-label>
+            <input autocomplete="off"
+                   class="user-name"
+                   formControlName="seatLocation"
+                   matInput
+                   placeholder="Seat Location"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('seatLocation','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Work Information</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="workInformation"
+                   matInput
+                   placeholder="Work Information"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('workInformation','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Phone Number</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="phoneNumber"
+                   matInput
+                   placeholder="Phone Number"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('phoneNumber','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-select
+              formControlName="gender"
+              placeholder="Gender" required>
+              <mat-option [value]="'M'">Male</mat-option>
+              <mat-option [value]="'F'">Female</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="isControlHasError('gender','required')">
+              <strong>Required field</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="email"
+                   matInput
+                   placeholder="Email"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('email','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Department</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="department"
+                   matInput
+                   placeholder="Department"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('department','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Salary</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="salary"
+                   matInput
+                   placeholder="salary"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('salary','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 t-a-e">
+      <ng-container *ngIf="type != 'VIEW'">
+        <button
+          (click)="onSave($event)"
+          [disabled]="!isValidForm()"
+          class="btn btn-primary"
+          type="button">
+          Save
+        </button>
+      </ng-container>
+      <ng-container>
+        <button
+          (click)="onCancelClick($event)"
+          class="btn btn-secondary m-l-20"
+          type="button">
+          Cancel
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

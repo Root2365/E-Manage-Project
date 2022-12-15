@@ -1,0 +1,130 @@
+<div class="container">
+  <div class="m-t-50">
+    <div class="row">
+      <div class="col-md-8">
+        <h5>Contact Us/ Enquires</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="card m-t-50">
+    <div class="card-body">
+      <div class="row">
+        <form [formGroup]="addEnquiryForm" autocomplete="off" class="kt-form" id="login-form"
+              style="padding-top: 25px;">
+
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Name</mat-label>
+                <input autocomplete="off"
+                       class="first-name"
+                       formControlName="name"
+                       matInput
+                       placeholder="Name"
+                       type="text"/>
+                <mat-error *ngIf="isControlHasError('name','required')">
+                  <strong>Required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field style="width: 100%;">
+                <mat-label>From Email</mat-label>
+                <input autocomplete="off"
+                       class="first-name"
+                       formControlName="fromEmail"
+                       matInput
+                       placeholder="From Email"
+                       type="text"/>
+                <mat-error *ngIf="isControlHasError('fromEmail','required')">
+                  <strong>Required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+              <mat-form-field style="width: 100%;">
+                <mat-label>To Email</mat-label>
+                <input autocomplete="off"
+                       class="first-name"
+                       formControlName="toEmail"
+                       matInput
+                       placeholder="To Email"
+                       type="text"/>
+                <mat-error *ngIf="isControlHasError('toEmail','required')">
+                  <strong>Required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Subject</mat-label>
+                <textarea formControlName="subject"
+                          matAutosizeMaxRows="4"
+                          matAutosizeMinRows="4"
+                          matInput
+                          matTextareaAutosize
+                          maxlength="1024"
+                          name="subject"
+                          placeholder="Subject"
+                >
+            </textarea>
+                <mat-error *ngIf="isControlHasError('subject','required')">
+                  <strong>Required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Message</mat-label>
+                <textarea formControlName="message"
+                          matAutosizeMaxRows="4"
+                          matAutosizeMinRows="4"
+                          matInput
+                          matTextareaAutosize
+                          maxlength="1024"
+                          name="message"
+                          placeholder="Message"
+                >
+            </textarea>
+                <mat-error *ngIf="isControlHasError('message','required')">
+                  <strong>Required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-t-20">
+    <div class="col-md-12 t-a-e">
+      <ng-container>
+        <button
+          (click)="onSave($event)"
+          [disabled]="!isValidForm()"
+          class="btn btn-primary"
+          type="button">
+          Save
+        </button>
+      </ng-container>
+      <ng-container>
+        <button
+          (click)="onReset($event)"
+          class="btn btn-secondary m-l-20"
+          type="button">
+          Reset
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>

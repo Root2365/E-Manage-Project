@@ -1,0 +1,91 @@
+<div>
+  <div class="row">
+    <div class="col-md-11 height-30px">
+      <h5>{{title}}</h5>
+    </div>
+    <div class="col-md-1 t-a-e">
+      <button
+        (click)="onCancelClick($event)"
+        aria-label="Close"
+        class="btn-close"
+        type="button">
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <form [formGroup]="addNewGameForm" autocomplete="off" class="kt-form" id="login-form"
+          style="padding-top: 25px;">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Picture</mat-label>
+            <input autocomplete="off"
+                   class="first-name"
+                   formControlName="picture"
+                   matInput
+                   placeholder="First Name"
+                   type="text"/>
+            <mat-error *ngIf="isControlHasError('picture','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Expiry Date</mat-label>
+            <input
+              [matDatepicker]="picker" formControlName="expiryDateStr"
+              matInput
+            >
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-select
+              formControlName="status"
+              placeholder="Status" required>
+              <mat-option [value]="'ACT'">Active</mat-option>
+              <mat-option [value]="'INA'">Inactive</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="isControlHasError('status','required')">
+              <strong>Required field</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 t-a-e">
+      <ng-container *ngIf="type != 'VIEW'">
+        <button
+          (click)="onSave($event)"
+          [disabled]="!isValidForm()"
+          class="btn btn-primary"
+          type="button">
+          Save
+        </button>
+      </ng-container>
+      <ng-container>
+        <button
+          (click)="onCancelClick($event)"
+          class="btn btn-secondary m-l-20"
+          type="button">
+          Cancel
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

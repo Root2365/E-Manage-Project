@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="m-t-50">
+    <div class="row">
+      <div class="col-md-8">
+        <h5>Employee(s)</h5>
+      </div>
+      <div class="col-md-4 t-a-e">
+        <button
+          (click)="onCreateEmployee()"
+          *ngIf="isAdmin()"
+          color="primary"
+          mat-raised-button
+          matTooltip="Add new employee">Add Employee
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card m-t-50">
+    <div class="card-body">
+      <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+        <ng-container matColumnDef="employeeID">
+          <th *matHeaderCellDef mat-header-cell> Employee ID</th>
+          <td *matCellDef="let element" mat-cell> {{element.employeeID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell>Name</th>
+          <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nticNo">
+          <th *matHeaderCellDef mat-header-cell>NTIC No</th>
+          <td *matCellDef="let element" mat-cell> {{element.nticNo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="passportExpiryDateStr">
+          <th *matHeaderCellDef mat-header-cell>Passport Expiry Date</th>
+          <td *matCellDef="let element" mat-cell> {{element.passportExpiryDateStr}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+          <th *matHeaderCellDef mat-header-cell>Phone Number</th>
+          <td *matCellDef="let element" mat-cell> {{element.phoneNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <th *matHeaderCellDef mat-header-cell>Gender</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ gender[element.gender] }}
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th *matHeaderCellDef mat-header-cell>Status</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ status[element.status] }}
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+            Actions
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <button (click)="view($event, row)" mat-icon-button
+                    matTooltip="View"
+                    type="button">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="edit($event,row)" [disabled]="!isAdmin()"
+                    mat-icon-button
+                    matTooltip="Edit"
+                    type="button">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </table>
+
+    </div>
+  </div>
+</div>

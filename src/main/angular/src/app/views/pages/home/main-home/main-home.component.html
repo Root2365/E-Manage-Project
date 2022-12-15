@@ -1,0 +1,11 @@
+<div>
+  <ng-container *ngIf="!isAdmin()">
+    <div style="text-align: center">
+      <h3 style="padding-top: 300px;">Work in Progress</h3>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isAdmin()">
+    <app-view-employee></app-view-employee>
+  </ng-container>
+</div>

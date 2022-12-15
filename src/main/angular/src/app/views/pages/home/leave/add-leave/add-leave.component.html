@@ -1,0 +1,130 @@
+<div>
+  <div class="row">
+    <div class="col-md-11 height-30px">
+      <h5>{{title}}</h5>
+    </div>
+    <div class="col-md-1 t-a-e">
+      <button
+        (click)="onCancelClick($event)"
+        aria-label="Close"
+        class="btn-close"
+        type="button">
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <form [formGroup]="addLeaveForm" autocomplete="off" class="kt-form" id="login-form"
+          style="padding-top: 25px;">
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-select
+              formControlName="employeeID"
+              placeholder="Employee" required>
+              <mat-option *ngFor="let employee of allEmployees"
+                          [value]="employee.employeeID">
+                {{employee.employeeID}}
+                - {{employee.name}}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="isControlHasError('employeeID','required')">
+              <strong>Required field</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>From Date</mat-label>
+            <input
+              [matDatepicker]="fromDateStr" formControlName="fromDateStr"
+              matInput
+            >
+            <mat-datepicker-toggle [for]="fromDateStr" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #fromDateStr></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>To Date</mat-label>
+            <input
+              [matDatepicker]="toDateStr" formControlName="toDateStr"
+              matInput
+            >
+            <mat-datepicker-toggle [for]="toDateStr" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #toDateStr></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Reason</mat-label>
+            <textarea formControlName="reason"
+                      matAutosizeMaxRows="4"
+                      matAutosizeMinRows="2"
+                      matInput
+                      matTextareaAutosize
+                      maxlength="300"
+                      name="reason"
+                      placeholder="Reason"
+            >
+            </textarea>
+            <mat-error *ngIf="isControlHasError('reason','required')">
+              <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%;">
+            <mat-select
+              formControlName="leaveStatus"
+              placeholder="Leave Status" required>
+              <mat-option [value]="'APPROVED'">Approved</mat-option>
+              <mat-option [value]="'NOT_APPROVED'">Not Approved</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="isControlHasError('leaveStatus','required')">
+              <strong>Required field</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12 t-a-e">
+      <ng-container *ngIf="type != 'VIEW'">
+        <button
+          (click)="onSave($event)"
+          [disabled]="!isValidForm()"
+          class="btn btn-primary"
+          type="button">
+          Save
+        </button>
+      </ng-container>
+      <ng-container>
+        <button
+          (click)="onCancelClick($event)"
+          class="btn btn-secondary m-l-20"
+          type="button">
+          Cancel
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

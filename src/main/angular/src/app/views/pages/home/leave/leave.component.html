@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="m-t-50">
+    <div class="row">
+      <div class="col-md-8">
+        <h5>Leaves</h5>
+      </div>
+      <div class="col-md-4 t-a-e">
+        <button
+          (click)="onAddLeave()"
+          *ngIf="isAdmin()"
+          color="primary"
+          mat-raised-button
+          matTooltip="Add Leave">Add Leave
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card m-t-50">
+    <div class="card-body">
+      <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+        <ng-container matColumnDef="leaveID">
+          <th *matHeaderCellDef mat-header-cell>Leave ID</th>
+          <td *matCellDef="let element" mat-cell> {{element.leaveID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="employeeID">
+          <th *matHeaderCellDef mat-header-cell>Employee ID</th>
+          <td *matCellDef="let element" mat-cell> {{element.employeeID}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="employeeName">
+          <th *matHeaderCellDef mat-header-cell>Employee Name</th>
+          <td *matCellDef="let element" mat-cell> {{element.employeeName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fromDateStr">
+          <th *matHeaderCellDef mat-header-cell>From Date</th>
+          <td *matCellDef="let element" mat-cell> {{element.fromDateStr}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="toDateStr">
+          <th *matHeaderCellDef mat-header-cell>To Date</th>
+          <td *matCellDef="let element" mat-cell> {{element.toDateStr}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="leaveStatus">
+          <th *matHeaderCellDef mat-header-cell>Leave Status</th>
+          <td *matCellDef="let element" mat-cell>
+            {{ leaveStatus[element.leaveStatus] }}
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+            Actions
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <button (click)="view($event, row)" mat-icon-button
+                    matTooltip="View"
+                    type="button">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button (click)="edit($event,row)" [disabled]="!isAdmin()"
+                    mat-icon-button
+                    matTooltip="Edit"
+                    type="button">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
